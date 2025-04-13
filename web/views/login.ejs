@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .login-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #5865F2;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .login-btn:hover {
+            background: #4752C4;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Вход через Discord</h1>
+        <p>Для доступа к панели управления необходимо авторизоваться</p>
+        <a href="<%= authUrl %>" class="login-btn">
+            Войти через Discord
+        </a>
+    </div>
+</body>
+</html>

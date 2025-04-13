@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/stats.js"></script>
+    <title>Панель управления - <%= bot.username %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Панель управления <%= bot.username %></h1>
+            <div class="user-info">
+                <img src="<%= user.avatar ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` : '/img/default-avatar.png' %>" alt="Аватар">
+                <span><%= user.username %>#<%= user.discriminator %></span>
+                <a href="/auth/logout" class="logout-btn">Выйти</a>
+            </div>
+        </header>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Серверов</h3>
+                <p><%= guilds.size %></p>
+            </div>
+            <div class="stat-card">
+                <h3>Аптайм</h3>
+                <p><%= Math.floor(stats.uptime / 3600) %>ч <%= Math.floor((stats.uptime % 3600) / 60) %>м</p>
+            </div>
+            <div class="stat-card">
+                <h3>Команд</h3>
+                <p><%= stats.commands %></p>
+            </div>
+        </div>
+        
+        <div class="guilds-list">
+            <h2>Серверы</h2>
+            <% guilds.forEach(guild => { %>
+                <div class="guild-card">
+                    <img src="<%= guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png` : '/img/default-guild.png' %>" alt="Иконка сервера">
+                    <div class="guild-info">
+                        <h3><%= guild.name %></h3>
+                        <p>Участников: <%= guild.memberCount %></p>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <div class="charts-container">
+        <div class="chart-card">
+            <h3>Нагрузка CPU</h3>
+            <canvas id="cpuChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>Использование RAM</h3>
+            <canvas id="ramChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>Время работы</h3>
+            <div id="uptimeDisplay" class="uptime-display">
+                <span id="uptimeDays">0</span> дней 
+                <span id="uptimeHours">0</span> часов
+                <span id="uptimeMinutes">0</span> минут
+            </div>
+        </div>
+    </div>
+    
+    <!-- В самом конце перед </body> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/stats.js"></script>
+</body>
+</html>

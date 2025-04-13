@@ -1,0 +1,7 @@
+{
+    "web": {
+        "port": 3000,
+        "secret": "your-secret-key",
+        "clientSecret": "your-discord-client-secret"
+    }
+}

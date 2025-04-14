@@ -4,6 +4,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const fs = require('fs');
 const path = require('path');
+const { ActivityType } = require('discord.js');
 
 // Добавьте в начало файла
 const { startWebServer } = require('./web/dashboard');
@@ -50,6 +51,7 @@ const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 client.once('ready', () => {
   console.log(`Бот ${client.user.tag} готов к работе!`);
   startWebServer(client, process.env.WEB_PORT || 3000);
+  
 });
 
 // Обработка команд
